@@ -1,0 +1,79 @@
+.formTitle {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.fieldHeader {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 20px 0px 2px;
+    display: block;
+}
+
+.defaultValue {
+    color: #7C7C7C;
+}
+
+.error {
+    color: #9A1D0D;
+}
+
+span.error {
+    display: block;
+}
+
+.errorInput {
+    border: 1px solid #9A1D0D !important;
+    box-shadow: 0 0 2px 2px rgba(154, 29, 13, 0.1) inset !important;
+}
+
+li.nav {
+    display: inline-block;
+    font-weight: bold;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+/* drop arrow */
+.whiteDownArrow {
+    display: inline-block;
+    background: url("../images/white-down-arrow.png");
+    height: 8px;
+    width: 13px;
+}
+
+.blackDownArrow {
+    display: inline-block;
+    background: url("../images/black-down-arrow.png");
+    height: 8px;
+    width: 13px;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.button a, .button span {
+    display: inline-block;
+    background-color: #9A1D0D;
+    color: #FFF;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    padding: 5px;
+    outline: none;
+}
+
+.outerShadow {
+    border: 1px solid #7C7C7C;
+    -webkit-box-shadow: 0 0 2px 1px #BBB;
+    -moz-box-shadow: 0 0 2px 1px #BBB;
+    box-shadow: 0 0 2px 1px #BBB;
+}
+
+.innerShadow {
+    border: 1px solid #7C7C7C;
+    -webkit-box-shadow: 0 0 2px 2px rgba(44, 44, 44, 0.1) inset;
+    -moz-box-shadow: 0 0 2px 2px rgba(44, 44, 44, 0.1) inset;
+    box-shadow: 0 0 2px 2px rgba(44, 44, 44, 0.1) inset;
+}

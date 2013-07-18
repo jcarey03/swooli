@@ -1,0 +1,131 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+                http://www.springframework.org/schema/util
+                http://www.springframework.org/schema/util/spring-util-3.1.xsd
+                http://www.springframework.org/schema/mvc
+                http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd ">
+
+    <context:component-scan base-package="com.swooli.web.controller, com.swooli.web.security" />
+
+    <!-- JSR-303 support will be detected on classpath and enabled automatically -->
+    <mvc:annotation-driven />
+
+    <aop:aspectj-autoproxy/>
+
+    <!-- shortcut for when there is no controller logic neeeded before generating the view -->
+    <!-- <mvc:view-controller path="/" view-name="home"/>-->
+
+    <!-- handle static resources...alternatively,
+        <mvc:resources mapping="/css/**" location="/css/" />
+        <mvc:resources mapping="/images/**" location="/images/" />
+        <mvc:resources mapping="/scripts/**" location="/scripts/" />
+    -->
+    <mvc:default-servlet-handler/>
+
+    <!-- custom filters -->
+    <bean id="userSessionFilter" class="com.swooli.web.filter.UserSessionFilter" />
+
+    <bean id="contentNegotiatingViewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1" />
+        <property name="contentNegotiationManager">
+            <bean class="org.springframework.web.accept.ContentNegotiationManager">
+                <constructor-arg>
+                    <bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+                        <constructor-arg>
+                            <map>
+                                <entry key="xml">
+                                    <util:constant static-field="org.springframework.http.MediaType.APPLICATION_XML" />
+                                </entry>
+                                <entry key="json">
+                                    <util:constant static-field="org.springframework.http.MediaType.APPLICATION_JSON" />
+                                </entry>
+                            </map>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <!-- JSON View -->
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+                <!-- JAXB XML View -->
+                <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+                    <constructor-arg>
+                        <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+                            <property name="classesToBeBound">
+                                <list>
+                                    <value>com.swooli.extraction.html.WebPageSummary</value>
+                                </list>
+                            </property>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </property>
+        <property name="ignoreAcceptHeader" value="true" />
+ 
+    </bean>
+    
+    <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="2" />
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="WEB-INF/messages" />
+        <property name="cacheSeconds" value="10" />
+    </bean>
+
+    <!-- data binding -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+            </set>
+        </property>
+        <property name="formatters">
+            <set>
+                <bean class="com.swooli.web.config.format.GenderFormatter" />
+            </set>
+        </property>
+    </bean>
+
+    <!-- beans -->
+    <bean id="facebookApi" class="com.swooli.web.util.facebook.FacebookApi">
+        <constructor-arg index="0" type="java.lang.String">
+            <bean class="com.swooli.ApplicationProperties" factory-method="get">
+                <constructor-arg value="swooli.facebook.app.id"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" type="java.lang.String">
+            <bean class="com.swooli.ApplicationProperties" factory-method="get">
+                <constructor-arg value="swooli.facebook.private.key"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!-- exception mapping -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.ClassNotFoundException">pages/classNotFoundException</prop>
+                <prop key="java.lang.CloneNotSupportedException">pages/cloneNotSupportedException</prop>
+            </props>
+        </property>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,59 @@
+#accountFormContainer {
+    width: 310px;
+    padding: 10px;
+    margin: 50px;
+    position: relative;
+    left: 60%;
+}
+
+#accountForm p {
+    font-weight: bold;
+    font-size: larger;
+}
+
+#createAccountButton {
+    text-align: right;
+    margin-top: 15px;
+}
+
+#firstName, #lastName {
+    width: 138px;
+}
+
+#firstName {
+    margin-right: 6px;
+}
+
+#email, #password, #confirmPassword, #gender {
+    width: 298px;
+}
+
+#recaptchaWidget {
+    position: relative;
+    left: -4px;
+    min-height: 130px;
+}
+
+#tosContainer {
+    margin-top: 10px;
+}
+
+#tosContainer a {
+    font-weight: bold;
+}
+
+#passwordStrength {
+    float: right;
+}
+
+.passwordStrong, .passwordGood {
+    color: #006600;
+}
+
+.passwordWeak {
+    color: #E6C200;
+}
+
+.passwordPoor {
+    color: #9A1D0D;
+}

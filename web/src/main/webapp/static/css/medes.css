@@ -1,0 +1,71 @@
+.medesDescription, .medesUrl, .medesWps {
+    width: 700px;
+}
+
+.medesDescription {
+    display: block;
+}
+
+.medesUrlContainer {
+    display: block;
+}
+
+.medesUrl {
+}
+
+.medesSearchButton {
+    background-image: url("../images/search.png");
+    display: inline-block;
+    position: relative;
+    left: -35px;
+    top: 5px;
+    height: 25px;
+    width: 25px;
+}
+
+.medesLoadingButton {
+    background-image: url("../images/loading.gif");
+    display: inline-block;
+    height: 25px;
+    left: -34px;
+    position: relative;
+    top: 8px;
+    width: 25px;
+}
+
+.medesWps {
+    padding: 5px;
+    overflow: hidden;
+}
+
+.medesWpsVideo, .medesWpsImage {
+    float: left;
+    margin-right: 5px;
+}
+
+.medesWpsClose {
+    float: right;
+    background-image: url("../images/grey_close_24x24.png");
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    bottom: 2px;
+}
+
+.medesWpsTitle {
+    color: #9A1D0D;
+    font-weight: bold;
+}
+
+.medesWpsDescription {
+    
+}
+
+.medesWpsTitle, .medesWpsHost, .medesWpsDescription {
+    padding-bottom: 2px;
+}
+
+.medesWpsHost {
+    font-size: 12px;
+}

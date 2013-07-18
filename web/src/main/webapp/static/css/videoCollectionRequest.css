@@ -1,0 +1,27 @@
+#createCollectionContainer {
+    padding: 10px;
+}
+
+#title {
+    width: 350px;
+}
+
+.mirroredText { 
+    line-height: 17px; 
+}
+
+#visible, #open {
+    position: relative;
+    top: 2px;
+}
+
+#sharingContainer {
+    width: 700px;
+}
+
+#sharingContainer .button {
+    float: right;
+    position: relative;
+    bottom: 15px;
+    left: 12px;
+}

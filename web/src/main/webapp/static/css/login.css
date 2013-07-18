@@ -1,0 +1,70 @@
+#loginContainer {
+    width: 270px;
+    padding: 10px 10px 5px;
+    margin: 50px;
+    position: relative;
+    left: 60%;
+}
+
+#basicLoginError {
+    padding-top: 10px;
+}
+
+#fbLoginError {
+    padding-top: 5px;
+}
+
+#basicLoginContainer div.button {
+    text-align: right;
+    margin-top: -5px;
+}
+
+#loginDividerContainer {
+    margin-top: 25px;
+}
+
+#loginDividerContainer hr {
+    width: 35%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 10px;
+}
+
+#fbButton {
+    text-align: center;
+    background-image: url("../images/fblogin.png");
+    width: 270px;
+    height: 36px;
+    margin-top: 2px;
+}
+
+#fbLoginContainer + div {
+    text-align: center;
+}
+
+#email, #password {
+    width: 258px;
+}
+
+#loginButton {
+    float: right;
+}
+
+#forgotPassword {
+    line-height: 30px;
+}
+
+#rememberMeContainer {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#rememberMeContainer label {
+    position: relative;
+    left: 2px;
+}
+
+#rememberMe {
+    position: relative;
+    top: 2px;
+}
